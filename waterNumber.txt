@@ -1,0 +1,52 @@
+package number.water;
+
+import java.util.Scanner;
+
+public class Test {
+	public static void main(String[] args) {
+		boolean flag = true;
+		 while(flag){
+		 Scanner input = new Scanner(System.in);
+		 String str = input.nextLine();
+		 String[] numbers = str.split(" ");
+		 int[] nums = new int[numbers.length];
+		 for(int i = 0;i < nums.length;i++){
+			 nums[i] = Integer.parseInt(numbers[i]);
+		 }
+		 
+		 
+         int rightBig = nums[nums.length-1];
+         int leftBig = nums[0];
+         int capacity = 0;
+         int right = nums.length-1;
+         int left = 0;
+         while(right != left){
+        	 if(nums[right] > nums[left]){
+        		 left++;
+        		 if(nums[left] > leftBig){
+//        			 capacity += leftBig;
+        			 leftBig = nums[left];
+        		 }else{
+        			 capacity += leftBig - nums[left];
+        		 }       		       
+        	 }else{
+        		 
+        		 right--;
+        		 if(nums[right] > rightBig){
+//        			 capacity += leftBig;
+        			 leftBig = nums[right];
+        		 }else{
+        			 capacity += rightBig - nums[right];
+        		 } 
+        	 }
+        	 
+        	 
+        	 
+         }
+         
+         
+         System.out.println("这些数字能盛水"+capacity);
+		 }
+		
+	}
+}
